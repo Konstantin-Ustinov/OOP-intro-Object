@@ -1,7 +1,9 @@
 package oop.net;
 
+import oop.net.flower.Bouquet;
 import oop.net.humans.Human;
 import oop.net.cars.Car;
+import oop.net.flower.Flower;
 
 public class Main {
 
@@ -26,6 +28,19 @@ public class Main {
         for (Car car : cars) {
             System.out.println(car.toString());
         }
+
+        System.out.println("Task 4");
+
+        Flower[] flowers = new Flower[4];
+        fillFlowersArray(flowers);
+
+        for (Flower flower : flowers) {
+            System.out.println(flower.toString());
+        }
+
+        System.out.println("Создаем букет");
+        Bouquet bouquet = new Bouquet(flowers);
+        System.out.println(bouquet.toString());
     }
 
     private static void fillHumansArray(Human[] humans) {
@@ -43,5 +58,12 @@ public class Main {
         cars[3] = new Car("Kia", "Sportage 4 поколение", 2.4, "красный", 2018, "Южная Корея");
         cars[4] = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея");
         cars[5] = new Car();
+    }
+
+    private static void fillFlowersArray(Flower[] flowers) {
+        flowers[0] = new Flower("Роза обыкновенная", "Голландия", 35.59,0);
+        flowers[1] = new Flower("Хризантема", "", 15.00,5);
+        flowers[2] = new Flower("Пион", "англия", 69.90,1);
+        flowers[3] = new Flower("Гипсофила", "Турция", 19.50,10);
     }
 }
