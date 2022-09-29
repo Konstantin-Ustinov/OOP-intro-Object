@@ -35,6 +35,41 @@ public class Human {
         return job;
     }
 
+    public void setTown(String town) {
+        if (town == null || "".equals(town)) {
+            this.town = "Информация не указана";
+        }
+        else {
+            this.town = town;
+        }
+    }
+
+    public void setName(String name) {
+        if (name == null || "".equals(name)) {
+            this.name = "Информация не указана";
+        }
+        else {
+            this.name = name;
+        }
+    }
+
+    public void setJob(String job) {
+        if (job == null || "".equals(job)) {
+            this.job = "Информация не указана";
+        }
+        else {
+            this.job = job;
+        }
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        if (yearOfBirth < 0) {
+            this.yearOfBirth = 0;
+        } else {
+            this.yearOfBirth = yearOfBirth;
+        }
+    }
+
     @Override
     public String toString() {
         return "Имя ='" + getName() + '\'' +

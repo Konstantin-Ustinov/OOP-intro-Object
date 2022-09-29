@@ -11,12 +11,12 @@ public class Car {
     private String productionCountry;
 
     public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry) {
-        this.brand = brand;
-        this.model = model;
+        this.brand = brand == null ? "default" : brand;
+        this.model = model == null ? "default" : model;
         this.engineVolume = engineVolume;
-        this.color = color;
+        this.color = color == null ? "белый" : color;
         this.productionYear = productionYear;
-        this.productionCountry = productionCountry;
+        this.productionCountry = productionCountry == null ? "default" : productionCountry;
     }
 
     public Car() {
