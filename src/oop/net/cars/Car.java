@@ -9,6 +9,8 @@ public class Car {
     private String color;
     private int productionYear;
     private String productionCountry;
+    private String tiers = "Summer";
+    private String reqNumber = "Не задано";
 
     public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry) {
         this.brand = brand == null ? "default" : brand;
@@ -45,6 +47,31 @@ public class Car {
 
     public String getProductionCountry() {
         return productionCountry;
+    }
+
+    public String getTiers() {
+        return tiers;
+    }
+
+    public String getReqNumber() {
+        return reqNumber;
+    }
+
+    public void setReqNumber(String reqNumber) {
+        if (reqNumber.matches("[A-Z]\\d\\d\\d[A-z][A-z]\\d\\d\\d")) {
+            this.reqNumber = reqNumber;
+        } else {
+            this.reqNumber = "Не задано";
+        }
+
+    }
+
+    public void changeTiers() {
+        if (tiers.equals("Summer")) {
+            tiers = "winter";
+        } else {
+            tiers = "Summer";
+        }
     }
 
     @Override
