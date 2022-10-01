@@ -3,7 +3,10 @@ package oop.net;
 import oop.net.flower.Bouquet;
 import oop.net.humans.Human;
 import oop.net.cars.Car;
+import oop.net.cars.Car.Insurance;
 import oop.net.flower.Flower;
+
+import java.time.LocalDateTime;
 
 public class Main {
 
@@ -53,6 +56,8 @@ public class Main {
 
     private static void fillCarsArray(Car[] cars) {
         cars[0] = new Car("Lada", "Grande", 1.7, "желтый", 2015, "Россия");
+        Insurance insurance = cars[0].new Insurance(LocalDateTime.of(2022, 12, 23, 00,00),1984.20, "23YB34567");
+        cars[0].setInsurance(insurance);
         cars[1] = new Car("Audi", "A8", 3.0, "черный", 2020, "Германия");
         cars[2] = new Car("BMW", "Z8", 3.0, "черный", 2021, "Германия");
         cars[3] = new Car("Kia", "Sportage 4 поколение", 2.4, "красный", 2018, "Южная Корея");

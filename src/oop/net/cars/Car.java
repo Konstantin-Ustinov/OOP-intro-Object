@@ -1,5 +1,6 @@
 package oop.net.cars;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Car {
@@ -11,6 +12,97 @@ public class Car {
     private String productionCountry;
     private String tiers = "Summer";
     private String reqNumber = "Не задано";
+    private Key key;
+    private Insurance insurance;
+
+    class Key {
+        private boolean remoteStartEngine;
+        private boolean notKeyEnter;
+
+        public Key(boolean remoteStartEngine, boolean notKeyEnter) {
+            this.remoteStartEngine = remoteStartEngine;
+            this.notKeyEnter = notKeyEnter;
+        }
+
+        public boolean isRemoteStartEngine() {
+            return remoteStartEngine;
+        }
+
+        public void setRemoteStartEngine(boolean remoteStartEngine) {
+            this.remoteStartEngine = remoteStartEngine;
+        }
+
+        public boolean isNotKeyEnter() {
+            return notKeyEnter;
+        }
+
+        public void setNotKeyEnter(boolean notKeyEnter) {
+            this.notKeyEnter = notKeyEnter;
+        }
+    }
+
+    public class Insurance {
+        private LocalDateTime validPeriod;
+        private double cost;
+        private String number;
+
+        public Insurance() {
+            this.validPeriod = LocalDateTime.MIN;
+            this.cost = 0;
+            this.number = "Не указано";
+        }
+
+        public Insurance(LocalDateTime validPeriod, double cost, String number) {
+            this.validPeriod = validPeriod;
+            this.cost = cost;
+            this.number = number;
+        }
+
+        public void checkValidPeriod() {
+            if (LocalDateTime.now().isAfter(validPeriod)) {
+                System.out.println("Срочно оформить страховку!");
+            }
+        }
+
+        public void checkNumber() {
+            if (number.length() != 9) {
+                System.out.println( "Номер страховки некорректный!");
+            }
+        }
+
+        public LocalDateTime getValidPeriod() {
+            return validPeriod;
+        }
+
+        public void setValidPeriod(LocalDateTime validPeriod) {
+            this.validPeriod = validPeriod;
+        }
+
+        public double getCost() {
+            return cost;
+        }
+
+        public void setCost(double cost) {
+            this.cost = cost;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
+
+        @Override
+        public String toString() {
+            return "Insurance{" +
+                    "validPeriod=" + validPeriod +
+                    ", cost=" + cost +
+                    ", number='" + number + '\'' +
+                    '}';
+        }
+    }
 
     public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry) {
         this.brand = brand == null ? "default" : brand;
@@ -66,6 +158,27 @@ public class Car {
 
     }
 
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
+    public Insurance getInsurance() {
+        if (insurance != null) {
+            return insurance;
+        } else {
+            return new Insurance();
+        }
+
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+
     public void changeTiers() {
         if (tiers.equals("Summer")) {
             tiers = "winter";
@@ -81,7 +194,8 @@ public class Car {
                 ", Объем двигателя: " + engineVolume +
                 ", Цвет: " + color +
                 ", Год выпуска: " + productionYear +
-                ", Сборка: " + productionCountry;
+                ", Сборка: " + productionCountry +
+                "\n Страховка: " + getInsurance();
     }
 
     @Override
