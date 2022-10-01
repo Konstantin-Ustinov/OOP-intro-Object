@@ -1,15 +1,10 @@
-package oop.net.cars;
+package oop.net.transport;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Car {
-    private String brand;
-    private String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    private int productionYear;
-    private String productionCountry;
     private String tiers = "Summer";
     private String reqNumber = "Не задано";
     private Key key;
@@ -105,12 +100,8 @@ public class Car {
     }
 
     public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry) {
-        this.brand = brand == null ? "default" : brand;
-        this.model = model == null ? "default" : model;
+        super(brand, model, productionCountry, color, productionYear, 0);
         this.engineVolume = engineVolume;
-        this.color = color == null ? "белый" : color;
-        this.productionYear = productionYear;
-        this.productionCountry = productionCountry == null ? "default" : productionCountry;
     }
 
     public Car() {

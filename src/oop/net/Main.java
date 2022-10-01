@@ -2,9 +2,10 @@ package oop.net;
 
 import oop.net.flower.Bouquet;
 import oop.net.humans.Human;
-import oop.net.cars.Car;
-import oop.net.cars.Car.Insurance;
+import oop.net.transport.Car;
+import oop.net.transport.Car.Insurance;
 import oop.net.flower.Flower;
+import oop.net.transport.Train;
 
 import java.time.LocalDateTime;
 
@@ -44,6 +45,15 @@ public class Main {
         System.out.println("Создаем букет");
         Bouquet bouquet = new Bouquet(flowers);
         System.out.println(bouquet.toString());
+
+        System.out.println("Task 5");
+
+        Train[] trains = new Train[2];
+        fillTrainsArray(trains);
+
+        for (Train train : trains) {
+            System.out.println(train.toString());
+        }
     }
 
     private static void fillHumansArray(Human[] humans) {
@@ -70,5 +80,14 @@ public class Main {
         flowers[1] = new Flower("Хризантема", "", 15.00,5);
         flowers[2] = new Flower("Пион", "англия", 69.90,1);
         flowers[3] = new Flower("Гипсофила", "Турция", 19.50,10);
+    }
+
+    private static void fillTrainsArray(Train[] trains) {
+        trains[0] = new Train("Ласточка", "B-901", "Россия","",
+                2011, 301, 3500, LocalDateTime.of(2022, 9, 28, 00, 00),
+                "Белорусский вокзал", "Минск-Пассажирский", 11);
+        trains[1] = new Train("Ленинград", "D-125", "Россия","",
+                2019, 270, 1700, LocalDateTime.of(2022, 9, 28, 00, 00),
+                "Ленинградский вокзал", "Ленинград-Пассажирский", 8);
     }
 }
