@@ -2,12 +2,10 @@ package oop.net;
 
 import oop.net.flower.Bouquet;
 import oop.net.humans.Human;
+import oop.net.transport.Bus;
 import oop.net.transport.Car;
-import oop.net.transport.Car.Insurance;
 import oop.net.flower.Flower;
-import oop.net.transport.Train;
-
-import java.time.LocalDateTime;
+import oop.net.transport.Track;
 
 public class Main {
 
@@ -26,7 +24,7 @@ public class Main {
 
         System.out.println("Task 3");
 
-        Car[] cars = new Car[6];
+        Car[] cars = new Car[4];
         fillCarsArray(cars);
 
         for (Car car : cars) {
@@ -48,11 +46,20 @@ public class Main {
 
         System.out.println("Task 5");
 
-        Train[] trains = new Train[2];
-        fillTrainsArray(trains);
+        Track[] tracks = new Track[4];
+        fillTracksArray(tracks);
 
-        for (Train train : trains) {
-            System.out.println(train.toString());
+        for (Track track : tracks) {
+            System.out.println(track.toString());
+        }
+
+        System.out.println("Task 6");
+
+        Bus[] buses = new Bus[4];
+        fillBusesArray(buses);
+
+        for (Track track : tracks) {
+            System.out.println(track.toString());
         }
     }
 
@@ -65,14 +72,10 @@ public class Main {
     }
 
     private static void fillCarsArray(Car[] cars) {
-        cars[0] = new Car("Lada", "Grande", 1.7, "желтый", 2015, "Россия");
-        Insurance insurance = cars[0].new Insurance(LocalDateTime.of(2022, 12, 23, 00,00),1984.20, "23YB34567");
-        cars[0].setInsurance(insurance);
-        cars[1] = new Car("Audi", "A8", 3.0, "черный", 2020, "Германия");
-        cars[2] = new Car("BMW", "Z8", 3.0, "черный", 2021, "Германия");
-        cars[3] = new Car("Kia", "Sportage 4 поколение", 2.4, "красный", 2018, "Южная Корея");
-        cars[4] = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея");
-        cars[5] = new Car();
+        cars[0] = new Car("Lada", "Grande", 1.7);
+        cars[1] = new Car("Audi", "A8", 3.0);
+        cars[2] = new Car("BMW", "Z8", 3.0);
+        cars[3] = new Car("Kia", "Sportage 4 поколение", 2.4);
     }
 
     private static void fillFlowersArray(Flower[] flowers) {
@@ -82,12 +85,19 @@ public class Main {
         flowers[3] = new Flower("Гипсофила", "Турция", 19.50,10);
     }
 
-    private static void fillTrainsArray(Train[] trains) {
-        trains[0] = new Train("Ласточка", "B-901", "Россия","",
-                2011, 301, 3500, LocalDateTime.of(2022, 9, 28, 00, 00),
-                "Белорусский вокзал", "Минск-Пассажирский", 11);
-        trains[1] = new Train("Ленинград", "D-125", "Россия","",
-                2019, 270, 1700, LocalDateTime.of(2022, 9, 28, 00, 00),
-                "Ленинградский вокзал", "Ленинград-Пассажирский", 8);
+    private static void fillTracksArray(Track[] tracks) {
+        tracks[0] = new Track("HOWO", "h5", 5.6);
+        tracks[1] = new Track("Mercedes", "m85", 8.6);
+        tracks[2] = new Track("Haval", "maven", 4.9);
+        tracks[3] = new Track("KIA", "mia", 9.4);
+
+    }
+
+    private static void fillBusesArray(Bus[] buses) {
+        buses[0] = new Bus("volkswagen", "transporter", 3.2);
+        buses[1] = new Bus("Mercedes", "sprinter", 6.6);
+        buses[2] = new Bus("Haval", "bus", 4.9);
+        buses[3] = new Bus("KIA", "busik", 5.2);
+
     }
 }

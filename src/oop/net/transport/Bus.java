@@ -2,7 +2,19 @@ package oop.net.transport;
 
 public class Bus extends Transport{
 
-    public Bus(String brand, String model, String productionCountry, String color, int year, int maxSpeed) {
-        super(brand, model, productionCountry, color, year, maxSpeed);
+    public Bus(String brand, String model, double engineVolume) {
+        super(brand, model, engineVolume);
     }
+
+    @Override
+    public void startMove() {
+
+    }
+
+    @Override
+    public void endMove() {
+
+    }
+
+
 }

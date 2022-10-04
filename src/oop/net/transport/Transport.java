@@ -1,14 +1,11 @@
 package oop.net.transport;
 
-public class Transport {
+public abstract class Transport {
     String brand;
     String model;
-    String productionCountry;
-    String color;
-    int productionYear;
-    int maxSpeed;
+    private double engineVolume;
 
-    public Transport(String brand, String model, String productionCountry, String color, int year, int maxSpeed) {
+    public Transport(String brand, String model, double engineVolume) {
         if (brand == null || "".equals(brand)) {
             this.brand = "Не указано";
         } else {
@@ -19,19 +16,12 @@ public class Transport {
         } else {
             this.model = model;
         }
-        if (productionCountry == null || "".equals(productionCountry)) {
-            this.productionCountry = "Не указано";
-        } else {
-            this.productionCountry = productionCountry;
-        }
-        if (color == null || "".equals(color)) {
-            this.color = "Не указано";
-        } else {
-            this.color = color;
-        }
-        this.productionYear = Math.max(year, 1900);
-        this.maxSpeed = Math.max(maxSpeed, 0);
+        this.engineVolume = Math.max(engineVolume, 0);
     }
+
+    public abstract void startMove();
+
+    public abstract void endMove();
 
     public String getBrand() {
         return brand;
@@ -41,31 +31,12 @@ public class Transport {
         return model;
     }
 
-    public String getProductionCountry() {
-        return productionCountry;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public String getColor() {
-        return color;
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = Math.max(engineVolume, 0);
     }
 
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setColor(String color) {
-        if (color == null || "".equals(color)) {
-            this.color = "Не указано";
-        } else {
-            this.color = color;
-        }
-    }
-
-    public void setMaxSpeed(int maxSpeed) {
-        this.maxSpeed = Math.max(maxSpeed, 0);
-    }
 }
