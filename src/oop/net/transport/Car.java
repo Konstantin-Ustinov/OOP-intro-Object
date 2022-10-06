@@ -1,9 +1,7 @@
 package oop.net.transport;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
 
-public class Car extends Transport {
+public class Car extends Transport implements Competing, Comparable {
 
     public Car(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
@@ -31,11 +29,36 @@ public class Car extends Transport {
 
     @Override
     public void startMove() {
+        System.out.println("Машина начала движение.");
 
     }
 
     @Override
     public void endMove() {
+        System.out.println("Машина остановилась.");
 
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Машина заехала на питстоп.");
+
+    }
+
+    @Override
+    public void maxSpeed() {
+        System.out.println("Машина едет быстро.");
+
+    }
+
+    @Override
+    public void bestTime() {
+        System.out.println("Машина едет лучший круг.");
+
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

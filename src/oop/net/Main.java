@@ -1,11 +1,13 @@
 package oop.net;
 
 import oop.net.flower.Bouquet;
+import oop.net.humans.Driver;
 import oop.net.humans.Human;
 import oop.net.transport.Bus;
 import oop.net.transport.Car;
 import oop.net.flower.Flower;
-import oop.net.transport.Track;
+import oop.net.transport.Competing;
+import oop.net.transport.Truck;
 
 public class Main {
 
@@ -46,11 +48,11 @@ public class Main {
 
         System.out.println("Task 5");
 
-        Track[] tracks = new Track[4];
-        fillTracksArray(tracks);
+        Truck[] trucks = new Truck[4];
+        fillTracksArray(trucks);
 
-        for (Track track : tracks) {
-            System.out.println(track.toString());
+        for (Truck truck : trucks) {
+            System.out.println(truck.toString());
         }
 
         System.out.println("Task 6");
@@ -58,9 +60,31 @@ public class Main {
         Bus[] buses = new Bus[4];
         fillBusesArray(buses);
 
-        for (Track track : tracks) {
-            System.out.println(track.toString());
+        for (Truck truck : trucks) {
+            System.out.println(truck.toString());
         }
+
+        System.out.println("Task 7");
+
+        Competing[][] competing = {cars, buses, trucks};
+
+        for (int i = 0; i < competing.length; i++) {
+            for (int j = 0; j < competing[i].length; j++) {
+                competing[i][j].pitStop();
+                competing[i][j].bestTime();
+                competing[i][j].maxSpeed();
+            }
+        }
+
+        System.out.println("Task 8");
+
+        Driver<Car> paul = new Driver<>("Paul", true, 3, "B");
+        Driver<Bus> ben = new Driver<>("Ben", true, 6, "D");
+        Driver<Truck> mia = new Driver<>("Mia", true, 4, "C");
+        paul.startMove(cars[0]);
+        ben.startMove(buses[0]);
+        mia.startMove(trucks[0]);
+
     }
 
     private static void fillHumansArray(Human[] humans) {
@@ -85,11 +109,11 @@ public class Main {
         flowers[3] = new Flower("Гипсофила", "Турция", 19.50,10);
     }
 
-    private static void fillTracksArray(Track[] tracks) {
-        tracks[0] = new Track("HOWO", "h5", 5.6);
-        tracks[1] = new Track("Mercedes", "m85", 8.6);
-        tracks[2] = new Track("Haval", "maven", 4.9);
-        tracks[3] = new Track("KIA", "mia", 9.4);
+    private static void fillTracksArray(Truck[] trucks) {
+        trucks[0] = new Truck("HOWO", "h5", 5.6);
+        trucks[1] = new Truck("Mercedes", "m85", 8.6);
+        trucks[2] = new Truck("Haval", "maven", 4.9);
+        trucks[3] = new Truck("KIA", "mia", 9.4);
 
     }
 
@@ -100,4 +124,6 @@ public class Main {
         buses[3] = new Bus("KIA", "busik", 5.2);
 
     }
+
+
 }
