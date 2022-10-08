@@ -1,8 +1,7 @@
 package oop.net;
 
 import oop.net.flower.Bouquet;
-import oop.net.humans.Driver;
-import oop.net.humans.Human;
+import oop.net.humans.*;
 import oop.net.transport.Bus;
 import oop.net.transport.Car;
 import oop.net.flower.Flower;
@@ -78,9 +77,9 @@ public class Main {
 
         System.out.println("Task 8");
 
-        Driver<Car> paul = new Driver<>("Paul", true, 3, "B");
-        Driver<Bus> ben = new Driver<>("Ben", true, 6, "D");
-        Driver<Truck> mia = new Driver<>("Mia", true, 4, "C");
+        DriverB<Car> paul = new DriverB<>("Paul", true, 3, "B");
+        DriverD<Bus> ben = new DriverD<>("Ben", true, 6, "D");
+        DriverC<Truck> mia = new DriverC<>("Mia", true, 4, "C");
         paul.startMove(cars[0]);
         ben.startMove(buses[0]);
         mia.startMove(trucks[0]);
