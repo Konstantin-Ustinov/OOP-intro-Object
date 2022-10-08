@@ -2,6 +2,8 @@ package oop.net.transport;
 
 public class Truck extends Transport implements Competing, Comparable {
 
+    public enum Tonnage {N1, N2, N3}
+
 
     public Truck(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
