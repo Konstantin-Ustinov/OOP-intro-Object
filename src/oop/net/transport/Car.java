@@ -5,8 +5,11 @@ public class Car extends Transport implements Competing, Comparable {
 
     public enum BodyType { SEDAN, HATCHBACK, COUPE, UNIVERSAL, OFF_ROAD, ALL_ROAD, PICKUP, VAN, MINIVAN}
 
-    public Car(String brand, String model, double engineVolume) {
+    private BodyType bodyType;
+
+    public Car(String brand, String model, double engineVolume, BodyType bodyType) {
         super(brand, model, engineVolume);
+        this.bodyType = bodyType;
     }
 
     @Override
@@ -14,6 +17,15 @@ public class Car extends Transport implements Competing, Comparable {
         return "Марка: " + getBrand() +
                 ", Модель: " + getModel() +
                 ", Объем двигателя: ";
+    }
+
+
+    public void defineBodyType() {
+        if (bodyType == null ) {
+            System.out.println("данных по авто недостаточно");
+        } else {
+            System.out.println(getBodyType());
+        }
     }
 
     @Override
@@ -44,6 +56,14 @@ public class Car extends Transport implements Competing, Comparable {
     public void bestTime() {
         System.out.println("Машина едет лучший круг.");
 
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 
     @Override

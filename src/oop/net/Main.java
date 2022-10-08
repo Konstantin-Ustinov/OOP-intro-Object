@@ -52,6 +52,7 @@ public class Main {
 
         for (Truck truck : trucks) {
             System.out.println(truck.toString());
+            truck.defineTonnage();
         }
 
         System.out.println("Task 6");
@@ -59,8 +60,9 @@ public class Main {
         Bus[] buses = new Bus[4];
         fillBusesArray(buses);
 
-        for (Truck truck : trucks) {
-            System.out.println(truck.toString());
+        for (Bus bus : buses) {
+            System.out.println(bus.toString());
+            bus.defineCapacity();
         }
 
         System.out.println("Task 7");
@@ -95,10 +97,10 @@ public class Main {
     }
 
     private static void fillCarsArray(Car[] cars) {
-        cars[0] = new Car("Lada", "Grande", 1.7);
-        cars[1] = new Car("Audi", "A8", 3.0);
-        cars[2] = new Car("BMW", "Z8", 3.0);
-        cars[3] = new Car("Kia", "Sportage 4 поколение", 2.4);
+        cars[0] = new Car("Lada", "Grande", 1.7, Car.BodyType.COUPE);
+        cars[1] = new Car("Audi", "A8", 3.0, Car.BodyType.OFF_ROAD);
+        cars[2] = new Car("BMW", "Z8", 3.0, Car.BodyType.SEDAN);
+        cars[3] = new Car("Kia", "Sportage 4 поколение", 2.4, Car.BodyType.ALL_ROAD);
     }
 
     private static void fillFlowersArray(Flower[] flowers) {
@@ -109,18 +111,18 @@ public class Main {
     }
 
     private static void fillTracksArray(Truck[] trucks) {
-        trucks[0] = new Truck("HOWO", "h5", 5.6);
-        trucks[1] = new Truck("Mercedes", "m85", 8.6);
-        trucks[2] = new Truck("Haval", "maven", 4.9);
-        trucks[3] = new Truck("KIA", "mia", 9.4);
+        trucks[0] = new Truck("HOWO", "h5", 5.6, Truck.Tonnage.N1);
+        trucks[1] = new Truck("Mercedes", "m85", 8.6, Truck.Tonnage.N2);
+        trucks[2] = new Truck("Haval", "maven", 4.9, Truck.Tonnage.N1);
+        trucks[3] = new Truck("KIA", "mia", 9.4, Truck.Tonnage.N3);
 
     }
 
     private static void fillBusesArray(Bus[] buses) {
-        buses[0] = new Bus("volkswagen", "transporter", 3.2);
-        buses[1] = new Bus("Mercedes", "sprinter", 6.6);
-        buses[2] = new Bus("Haval", "bus", 4.9);
-        buses[3] = new Bus("KIA", "busik", 5.2);
+        buses[0] = new Bus("volkswagen", "transporter", 3.2, Bus.Capacity.LARGE);
+        buses[1] = new Bus("Mercedes", "sprinter", 6.6, Bus.Capacity.MEDIUM);
+        buses[2] = new Bus("Haval", "bus", 4.9, Bus.Capacity.EXTRA_SMALL);
+        buses[3] = new Bus("KIA", "busik", 5.2, Bus.Capacity.MEDIUM);
 
     }
 
