@@ -9,8 +9,8 @@ public class Car extends Transport implements Competing, Comparable {
 
     @Override
     public String toString() {
-        return "Марка: " + brand +
-                ", Модель: " + model +
+        return "Марка: " + getBrand() +
+                ", Модель: " + getModel() +
                 ", Объем двигателя: ";
     }
 

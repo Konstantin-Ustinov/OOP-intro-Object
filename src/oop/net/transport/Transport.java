@@ -1,8 +1,8 @@
 package oop.net.transport;
 
 public abstract class Transport {
-    String brand;
-    String model;
+    private String brand;
+    private String model;
     private double engineVolume;
 
     public Transport(String brand, String model, double engineVolume) {
