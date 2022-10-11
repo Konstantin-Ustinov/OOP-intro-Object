@@ -41,6 +41,11 @@ public class Car extends Transport implements Competing, Comparable {
     }
 
     @Override
+    public boolean passDiagnostics() {
+        return (Math.random() * 2) == 1;
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Машина заехала на питстоп.");
 

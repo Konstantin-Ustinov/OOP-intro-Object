@@ -23,6 +23,8 @@ public abstract class Transport {
 
     public abstract void endMove();
 
+    public abstract boolean passDiagnostics();
+
     public String getBrand() {
         return brand;
     }

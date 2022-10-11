@@ -36,6 +36,11 @@ public class Truck extends Transport implements Competing, Comparable {
     }
 
     @Override
+    public boolean passDiagnostics() {
+        return (Math.random() * 2) == 1;
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Грузовик заехал на питстоп.");
     }
