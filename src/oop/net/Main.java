@@ -1,12 +1,10 @@
 package oop.net;
 
+import oop.net.exceptions.WrongPassDiagnosticsException;
 import oop.net.flower.Bouquet;
 import oop.net.humans.*;
-import oop.net.transport.Bus;
-import oop.net.transport.Car;
+import oop.net.transport.*;
 import oop.net.flower.Flower;
-import oop.net.transport.Competing;
-import oop.net.transport.Truck;
 
 public class Main {
 
@@ -80,11 +78,26 @@ public class Main {
         System.out.println("Task 8");
 
         DriverB<Car> paul = new DriverB<>("Paul", true, 3, "B");
-        DriverD<Bus> ben = new DriverD<>("Ben", true, 6, "D");
+        DriverD<Bus> ben = new DriverD<>("Ben", true, 6, "");
         DriverC<Truck> mia = new DriverC<>("Mia", true, 4, "C");
         paul.startMove(cars[0]);
+        //ben.getCategory();
         ben.startMove(buses[0]);
         mia.startMove(trucks[0]);
+
+        System.out.println("Task Exceptions");
+
+        Transport[][] transports = {cars, buses, trucks};
+
+        for (int i = 0; i < transports.length; i++) {
+            for (int j = 0; j < transports[i].length; j++) {
+                if (transports[i][j].passDiagnostics()) {
+                    System.out.println("Диагностика " + transports[i][j].getModel() + " пройдена");
+                } else if (!"Bus".equals(transports[i][j].getClass().getName().substring(transports[i][j].getClass().getName().lastIndexOf(".") + 1))){
+                    throw new WrongPassDiagnosticsException("Диагностика " + transports[i][j].getModel() + " не пройдена");
+                }
+            }
+        }
 
     }
 

@@ -42,7 +42,7 @@ public class Car extends Transport implements Competing, Comparable {
 
     @Override
     public boolean passDiagnostics() {
-        return (Math.random() * 2) == 1;
+        return ((int) (Math.random() * 2)) == 1;
     }
 
     @Override

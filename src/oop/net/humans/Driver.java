@@ -1,5 +1,6 @@
 package oop.net.humans;
 
+import oop.net.exceptions.EmptyCategoryDriverException;
 import oop.net.transport.Transport;
 
 public class Driver <T extends Transport & Comparable>{
@@ -49,5 +50,15 @@ public class Driver <T extends Transport & Comparable>{
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+
+    public String getCategory() {
+        if (!category.isEmpty()) {
+            return category;
+        } else throw new EmptyCategoryDriverException("Категория прав не заполненна.");
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

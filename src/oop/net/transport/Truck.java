@@ -37,7 +37,7 @@ public class Truck extends Transport implements Competing, Comparable {
 
     @Override
     public boolean passDiagnostics() {
-        return (Math.random() * 2) == 1;
+        return true; //((int) (Math.random() * 2)) == 1;
     }
 
     @Override
