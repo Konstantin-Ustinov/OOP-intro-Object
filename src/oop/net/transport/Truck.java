@@ -1,5 +1,7 @@
 package oop.net.transport;
 
+import java.util.Random;
+
 public class Truck extends Transport implements Competing, Comparable {
 
     public enum Tonnage {
@@ -37,7 +39,8 @@ public class Truck extends Transport implements Competing, Comparable {
 
     @Override
     public boolean passDiagnostics() {
-        return true; //((int) (Math.random() * 2)) == 1;
+        Random random = new Random();
+        return random.nextInt(100) > 50;
     }
 
     @Override

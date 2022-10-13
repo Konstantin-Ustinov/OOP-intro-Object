@@ -1,6 +1,8 @@
 package oop.net.transport;
 
 
+import java.util.Random;
+
 public class Car extends Transport implements Competing, Comparable {
 
     public enum BodyType { SEDAN, HATCHBACK, COUPE, UNIVERSAL, OFF_ROAD, ALL_ROAD, PICKUP, VAN, MINIVAN}
@@ -42,7 +44,8 @@ public class Car extends Transport implements Competing, Comparable {
 
     @Override
     public boolean passDiagnostics() {
-        return ((int) (Math.random() * 2)) == 1;
+        Random random = new Random();
+        return random.nextInt(100) > 20;
     }
 
     @Override

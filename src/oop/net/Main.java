@@ -93,7 +93,7 @@ public class Main {
             for (int j = 0; j < transports[i].length; j++) {
                 if (transports[i][j].passDiagnostics()) {
                     System.out.println("Диагностика " + transports[i][j].getModel() + " пройдена");
-                } else if (!"Bus".equals(transports[i][j].getClass().getName().substring(transports[i][j].getClass().getName().lastIndexOf(".") + 1))){
+                } else if (!(transports[i][j] instanceof Bus)){
                     throw new WrongPassDiagnosticsException("Диагностика " + transports[i][j].getModel() + " не пройдена");
                 }
             }
