@@ -1,7 +1,7 @@
 package oop.net;
 
-import oop.net.exceptions.WrongPassDiagnosticsException;
 import oop.net.humans.*;
+import oop.net.stations.ServiceStation;
 import oop.net.transport.*;
 
 import java.util.ArrayList;
@@ -148,6 +148,16 @@ public class Main {
                 System.out.println(e.getMessage());
             }
         }
+
+        System.out.println("Queue");
+
+        ServiceStation serviceStation = new ServiceStation();
+
+        for (Transport transport : transports) {
+            serviceStation.addTransportToQueue(transport);
+        }
+
+        serviceStation.servicing();
     }
 
     private static void fillHumansArray(Human[] humans) {
