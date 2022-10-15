@@ -125,20 +125,20 @@ public class Main {
         System.out.println("drivers = " + drivers.get(0).toString());
         System.out.println("mechanics = " + mechanics.get(0));
 
-        transports.get(0).addDriver(drivers.get(0));
-        transports.get(1).addDriver(drivers.get(1));
-        transports.get(2).addDriver(drivers.get(2));
+        transports.get(0).getDrivers().add(drivers.get(0));
+        transports.get(1).getDrivers().add(drivers.get(1));
+        transports.get(2).getDrivers().add(drivers.get(2));
 
         drivers.get(0).setTransport(transports.get(0));
         drivers.get(1).setTransport(transports.get(1));
         drivers.get(2).setTransport(transports.get(2));
 
-        transports.get(0).addMechanics(mechanics.get(0));
-        transports.get(0).addMechanics(mechanics.get(3));
+        transports.get(0).getMechanics().add(mechanics.get(0));
+        transports.get(0).getMechanics().add(mechanics.get(3));
 
-        transports.get(0).addSponsors(sponsorList.get(0));
-        transports.get(1).addSponsors(sponsorList.get(1));
-        transports.get(2).addSponsors(sponsorList.get(2));
+        transports.get(0).getSponsors().add(sponsorList.get(0));
+        transports.get(1).getSponsors().add(sponsorList.get(1));
+        transports.get(2).getSponsors().add(sponsorList.get(2));
 
         for (Transport transport : transports) {
             try {

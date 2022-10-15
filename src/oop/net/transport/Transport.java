@@ -35,15 +35,6 @@ public abstract class Transport {
 
     public abstract boolean passDiagnostics();
 
-    public void addDriver(Driver driver) {
-        try {
-            drivers.add(driver);
-        } catch (NullPointerException e) {
-            System.out.println("Ошибка занесения Водителя в Транспорт. Водитель null");
-        }
-
-    }
-
     public List<Driver> getDrivers() {
         if (drivers != null) {
             return drivers;
@@ -52,25 +43,12 @@ public abstract class Transport {
         }
     }
 
-    public void addSponsors(Sponsor sponsor) {
-        sponsors.add(sponsor);
-    }
-
     public List<Sponsor> getSponsors() {
         if (sponsors != null) {
             return sponsors;
         } else {
             throw new RuntimeException("Спонсор не указан");
         }
-    }
-
-    public void addMechanics(Mechanic mechanic) {
-        try {
-            mechanics.add(mechanic);
-        } catch (NullPointerException e) {
-            System.out.println("Ошибка занесения Механика в Транспорт. " + e.getMessage());
-        }
-
     }
 
     public List<Mechanic> getMechanics() {
