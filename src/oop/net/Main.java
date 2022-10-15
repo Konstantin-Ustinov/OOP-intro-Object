@@ -2,6 +2,7 @@ package oop.net;
 
 import oop.net.humans.*;
 import oop.net.stations.ServiceStation;
+import oop.net.supermarket.CashRegisters;
 import oop.net.transport.*;
 
 import java.util.ArrayList;
@@ -158,6 +159,16 @@ public class Main {
         }
 
         serviceStation.servicing();
+
+        System.out.println("Supermarket");
+
+        CashRegisters cashRegisters = new CashRegisters();
+        for (int i = 1; i < 10; i++) {
+            cashRegisters.addToQueue("Имя " + i);
+            System.out.println("--------------------");
+        }
+
+        cashRegisters.removeFromQueue("Имя 7");
     }
 
     private static void fillHumansArray(Human[] humans) {
