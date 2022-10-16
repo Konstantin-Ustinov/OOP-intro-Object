@@ -168,7 +168,11 @@ public class Main {
             System.out.println("--------------------");
         }
 
-        cashRegisters.removeFromQueue("Имя 7");
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
     }
 
     private static void fillHumansArray(Human[] humans) {
