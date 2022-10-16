@@ -156,8 +156,10 @@ public class Main {
         for (Transport transport : transports) {
             serviceStation.addTransportToQueue(transport);
         }
+        while (serviceStation.servicing() != null) {
+            System.out.println(serviceStation.servicing());
+        }
 
-        serviceStation.servicing();
     }
 
     private static void fillHumansArray(Human[] humans) {

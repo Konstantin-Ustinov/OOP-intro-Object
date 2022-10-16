@@ -11,9 +11,9 @@ public abstract class Transport {
     private String brand;
     private String model;
     private double engineVolume;
-    private List<Driver> drivers = new ArrayList<>();
-    private List<Sponsor> sponsors = new ArrayList<>();
-    private List<Mechanic> mechanics = new ArrayList<>();
+    private final List<Driver> drivers = new ArrayList<>();
+    private final List<Sponsor> sponsors = new ArrayList<>();
+    private final List<Mechanic> mechanics = new ArrayList<>();
 
     public Transport(String brand, String model, double engineVolume) {
         if (brand == null || "".equals(brand)) {
@@ -36,27 +36,15 @@ public abstract class Transport {
     public abstract boolean passDiagnostics();
 
     public List<Driver> getDrivers() {
-        if (drivers != null) {
-            return drivers;
-        } else {
-            throw new RuntimeException("Водитель не указан");
-        }
+        return drivers;
     }
 
     public List<Sponsor> getSponsors() {
-        if (sponsors != null) {
-            return sponsors;
-        } else {
-            throw new RuntimeException("Спонсор не указан");
-        }
+        return sponsors;
     }
 
     public List<Mechanic> getMechanics() {
-        if (mechanics != null) {
-            return mechanics;
-        } else {
-            throw new RuntimeException("Механик не указан");
-        }
+        return mechanics;
     }
 
     public String getBrand() {
