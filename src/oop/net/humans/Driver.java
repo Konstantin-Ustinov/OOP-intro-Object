@@ -8,6 +8,7 @@ public class Driver <T extends Transport & Comparable>{
     private boolean hasDriverLicense;
     private int experience;
     private String category;
+    private Transport transport;
 
     public Driver(String fio, boolean hasDriverLicense, int experience, String category) {
         this.fio = fio;
@@ -58,7 +59,26 @@ public class Driver <T extends Transport & Comparable>{
         } else throw new EmptyCategoryDriverException("Категория прав не заполненна.");
     }
 
+    public void setTransport(Transport transport) {
+        this.transport = transport;
+    }
+
+    public Transport getTransport() {
+        return transport;
+    }
+
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "fio='" + fio + '\'' +
+                ", hasDriverLicense=" + hasDriverLicense +
+                ", experience=" + experience +
+                ", category='" + category + '\'' +
+                ", transport=" + transport +
+                '}';
     }
 }

@@ -1,25 +1,28 @@
 package oop.net;
 
-import oop.net.exceptions.WrongPassDiagnosticsException;
-import oop.net.flower.Bouquet;
 import oop.net.humans.*;
+import oop.net.stations.ServiceStation;
+import oop.net.supermarket.CashRegisters;
 import oop.net.transport.*;
-import oop.net.flower.Flower;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Task 1,2");
 
-        Human[] humans = new Human[5];
-        fillHumansArray(humans);
+        Sponsor[] sponsors = new Sponsor[4];
+        fillHumansArray(sponsors);
 
-        for (Human h : humans) {
-            System.out.printf("Привет! Меня зовут %s. Я из города %s. Я родился в %d году. " +
-                    "Я работаю на должности %s. Будем знакомы!",
-                    h.getName(), h.getTown(), h.getYearOfBirth(), h.getJob());
-            System.out.println();
-        }
+//        for (Human h : humans) {
+//            System.out.printf("Привет! Меня зовут %s. Я из города %s. Я родился в %d году. " +
+//                    "Я работаю на должности %s. Будем знакомы!",
+//                    h.getName(), h.getTown(), h.getYearOfBirth(), h.getJob());
+//            System.out.println();
+//        }
 
         System.out.println("Task 3");
 
@@ -30,18 +33,18 @@ public class Main {
             System.out.println(car.toString());
         }
 
-        System.out.println("Task 4");
-
-        Flower[] flowers = new Flower[4];
-        fillFlowersArray(flowers);
-
-        for (Flower flower : flowers) {
-            System.out.println(flower.toString());
-        }
-
-        System.out.println("Создаем букет");
-        Bouquet bouquet = new Bouquet(flowers);
-        System.out.println(bouquet.toString());
+//        System.out.println("Task 4");
+//
+//        Flower[] flowers = new Flower[4];
+//        fillFlowersArray(flowers);
+//
+//        for (Flower flower : flowers) {
+//            System.out.println(flower.toString());
+//        }
+//
+//        System.out.println("Создаем букет");
+//        Bouquet bouquet = new Bouquet(flowers);
+//        System.out.println(bouquet.toString());
 
         System.out.println("Task 5");
 
@@ -59,7 +62,6 @@ public class Main {
         fillBusesArray(buses);
 
         for (Bus bus : buses) {
-            System.out.println(bus.toString());
             bus.defineCapacity();
         }
 
@@ -85,28 +87,99 @@ public class Main {
         ben.startMove(buses[0]);
         mia.startMove(trucks[0]);
 
-        System.out.println("Task Exceptions");
+//        System.out.println("Task Exceptions");
+//
+//        Transport[][] transports = {cars, buses, trucks};
+//
+//        for (int i = 0; i < transports.length; i++) {
+//            for (int j = 0; j < transports[i].length; j++) {
+//                if (transports[i][j].passDiagnostics()) {
+//                    System.out.println("Диагностика " + transports[i][j].getModel() + " пройдена");
+//                } else if (!(transports[i][j] instanceof Bus)){
+//                    throw new WrongPassDiagnosticsException("Диагностика " + transports[i][j].getModel() + " не пройдена");
+//                }
+//            }
+//        }
 
-        Transport[][] transports = {cars, buses, trucks};
+        // Collections exercises
+        System.out.println("Collections");
 
-        for (int i = 0; i < transports.length; i++) {
-            for (int j = 0; j < transports[i].length; j++) {
-                if (transports[i][j].passDiagnostics()) {
-                    System.out.println("Диагностика " + transports[i][j].getModel() + " пройдена");
-                } else if (!(transports[i][j] instanceof Bus)){
-                    throw new WrongPassDiagnosticsException("Диагностика " + transports[i][j].getModel() + " не пройдена");
-                }
+        List<Transport> transports = new ArrayList<>();
+        transports.addAll(Arrays.asList(cars));
+        transports.addAll(Arrays.asList(trucks));
+        transports.addAll(Arrays.asList(buses));
+
+        List<Sponsor> sponsorList = new ArrayList<>(Arrays.asList(sponsors));
+
+        ArrayList<Driver> drivers = new ArrayList<>();
+        drivers.add(paul);
+        drivers.add(ben);
+        drivers.add(mia);
+
+        ArrayList<Mechanic> mechanics = new ArrayList<>();
+        mechanics.add(new Mechanic("Robert", "Kiosaki", 1982, "Chicago", "Mechanic", "Bugatti", cars));
+        mechanics.add(new Mechanic("Richard", "Kiosaki", 1992, "Chicago", "Mechanic", "Bugatti", trucks));
+        mechanics.add(new Mechanic("Marty", "Kiosaki", 1908, "Chicago", "Mechanic", "Bugatti", buses));
+        mechanics.add(new Mechanic("Ron", "Kiosaki", 2005, "Chicago", "Mechanic", "Bugatti", cars));
+        mechanics.add(new Mechanic("Anna", "Kiosaki", 1985, "Chicago", "Mechanic", "Bugatti", trucks));
+
+        System.out.println("drivers = " + drivers.get(0).toString());
+        System.out.println("mechanics = " + mechanics.get(0));
+
+        transports.get(0).getDrivers().add(drivers.get(0));
+        transports.get(1).getDrivers().add(drivers.get(1));
+        transports.get(2).getDrivers().add(drivers.get(2));
+
+        drivers.get(0).setTransport(transports.get(0));
+        drivers.get(1).setTransport(transports.get(1));
+        drivers.get(2).setTransport(transports.get(2));
+
+        transports.get(0).getMechanics().add(mechanics.get(0));
+        transports.get(0).getMechanics().add(mechanics.get(3));
+
+        transports.get(0).getSponsors().add(sponsorList.get(0));
+        transports.get(1).getSponsors().add(sponsorList.get(1));
+        transports.get(2).getSponsors().add(sponsorList.get(2));
+
+        for (Transport transport : transports) {
+            try {
+                System.out.println("Машина: " + transport.getModel() + "\n   Водители: " + transport.getDrivers().toString() +
+                        "\n   Спонсоры: " + transport.getSponsors().toString() + "\n   Механики: " + transport.getMechanics().toString());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
             }
         }
 
+        System.out.println("Queue");
+
+        ServiceStation serviceStation = new ServiceStation();
+
+        for (Transport transport : transports) {
+            serviceStation.addTransportToQueue(transport);
+        }
+
+        serviceStation.servicing();
+
+        System.out.println("Supermarket");
+
+        CashRegisters cashRegisters = new CashRegisters();
+        for (int i = 1; i < 10; i++) {
+            cashRegisters.addToQueue("Имя " + i);
+            System.out.println("--------------------");
+        }
+
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
     }
 
     private static void fillHumansArray(Human[] humans) {
-        humans[0] = new Human("Максим", 1987, "Минск", "бренд-менеджер");
-        humans[1] = new Human("Аня", 1993, "Москва", "методист образовательных программ");
-        humans[2] = new Human("Катя", 1994, "Калининград", "продакт-менеджер");
-        humans[3] = new Human("Артем", 1995, "Москва", "директор по развитию бизнеса");
-        humans[4] = new Human();
+        humans[0] = new Sponsor("Максим", 1987, "Минск", "бренд-менеджер");
+        humans[1] = new Sponsor("Аня", 1993, "Москва", "методист образовательных программ");
+        humans[2] = new Sponsor("Катя", 1994, "Калининград", "продакт-менеджер");
+        humans[3] = new Sponsor("Артем", 1995, "Москва", "директор по развитию бизнеса");
     }
 
     private static void fillCarsArray(Car[] cars) {
@@ -116,12 +189,12 @@ public class Main {
         cars[3] = new Car("Kia", "Sportage 4 поколение", 2.4, Car.BodyType.ALL_ROAD);
     }
 
-    private static void fillFlowersArray(Flower[] flowers) {
-        flowers[0] = new Flower("Роза обыкновенная", "Голландия", 35.59,0);
-        flowers[1] = new Flower("Хризантема", "", 15.00,5);
-        flowers[2] = new Flower("Пион", "англия", 69.90,1);
-        flowers[3] = new Flower("Гипсофила", "Турция", 19.50,10);
-    }
+//    private static void fillFlowersArray(Flower[] flowers) {
+//        flowers[0] = new Flower("Роза обыкновенная", "Голландия", 35.59,0);
+//        flowers[1] = new Flower("Хризантема", "", 15.00,5);
+//        flowers[2] = new Flower("Пион", "англия", 69.90,1);
+//        flowers[3] = new Flower("Гипсофила", "Турция", 19.50,10);
+//    }
 
     private static void fillTracksArray(Truck[] trucks) {
         trucks[0] = new Truck("HOWO", "h5", 5.6, Truck.Tonnage.N1);

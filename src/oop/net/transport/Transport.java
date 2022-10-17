@@ -1,9 +1,19 @@
 package oop.net.transport;
 
+import oop.net.humans.Driver;
+import oop.net.humans.Mechanic;
+import oop.net.humans.Sponsor;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport {
     private String brand;
     private String model;
     private double engineVolume;
+    private List<Driver> drivers = new ArrayList<>();
+    private List<Sponsor> sponsors = new ArrayList<>();
+    private List<Mechanic> mechanics = new ArrayList<>();
 
     public Transport(String brand, String model, double engineVolume) {
         if (brand == null || "".equals(brand)) {
@@ -24,6 +34,30 @@ public abstract class Transport {
     public abstract void endMove();
 
     public abstract boolean passDiagnostics();
+
+    public List<Driver> getDrivers() {
+        if (drivers != null) {
+            return drivers;
+        } else {
+            throw new RuntimeException("Водитель не указан");
+        }
+    }
+
+    public List<Sponsor> getSponsors() {
+        if (sponsors != null) {
+            return sponsors;
+        } else {
+            throw new RuntimeException("Спонсор не указан");
+        }
+    }
+
+    public List<Mechanic> getMechanics() {
+        if (mechanics != null) {
+            return mechanics;
+        } else {
+            throw new RuntimeException("Механик не указан");
+        }
+    }
 
     public String getBrand() {
         return brand;
