@@ -158,8 +158,9 @@ public class Main {
         for (Transport transport : transports) {
             serviceStation.addTransportToQueue(transport);
         }
-
-        serviceStation.servicing();
+        while (serviceStation.servicing() != null) {
+            System.out.println(serviceStation.servicing());
+        }
 
         System.out.println("Supermarket");
 
@@ -169,11 +170,16 @@ public class Main {
             System.out.println("--------------------");
         }
 
-        cashRegisters.removeFromQueue("Имя 7");
-
         System.out.println("2d List");
 
         List2d.example();
+
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+        cashRegisters.removeFromQueue();
+
     }
 
     private static void fillHumansArray(Human[] humans) {

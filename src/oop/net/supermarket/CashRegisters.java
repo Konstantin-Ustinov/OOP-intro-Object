@@ -2,6 +2,7 @@ package oop.net.supermarket;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class CashRegisters {
@@ -54,6 +55,31 @@ public class CashRegisters {
             System.out.println(name + " Удален из третьей очереди.");
         } else {
             System.out.println(name + " нет ни в одной очереди.");
+        }
+    }
+
+    public void removeFromQueue() {
+       int num = new Random().nextInt(3);
+        switch (num) {
+            case 0: if (queue1.size() > 0) {
+                        queue1.poll();
+                        System.out.println("Обслужен из первой очереди.");
+                    } else {
+                        System.out.println("Очередь пуста.");
+                    } break;
+            case 1: if (queue2.size() > 0) {
+                        queue2.poll();
+                        System.out.println("Обслужен из второй очереди.");
+                    } else {
+                        System.out.println("Очередь пуста.");
+                    } break;
+            case 2: if (queue3.size() > 0) {
+                        queue3.poll();
+                        System.out.println("Обслужен из третьей очереди.");
+                    } else {
+                        System.out.println("Очередь пуста.");
+                    } break;
+            default: System.out.println("Такой очереди нет.");
         }
     }
 }
