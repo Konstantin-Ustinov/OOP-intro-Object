@@ -1,6 +1,7 @@
 package oop.net;
 
 import oop.net.humans.*;
+import oop.net.list2d.List2d;
 import oop.net.stations.ServiceStation;
 import oop.net.supermarket.CashRegisters;
 import oop.net.transport.*;
@@ -169,11 +170,16 @@ public class Main {
             System.out.println("--------------------");
         }
 
+        System.out.println("2d List");
+
+        List2d.example();
+
         cashRegisters.removeFromQueue();
         cashRegisters.removeFromQueue();
         cashRegisters.removeFromQueue();
         cashRegisters.removeFromQueue();
         cashRegisters.removeFromQueue();
+
     }
 
     private static void fillHumansArray(Human[] humans) {
