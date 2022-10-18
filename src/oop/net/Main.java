@@ -157,8 +157,9 @@ public class Main {
         for (Transport transport : transports) {
             serviceStation.addTransportToQueue(transport);
         }
-
-        serviceStation.servicing();
+        while (serviceStation.servicing() != null) {
+            System.out.println(serviceStation.servicing());
+        }
 
         System.out.println("Supermarket");
 

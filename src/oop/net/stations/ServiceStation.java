@@ -17,12 +17,11 @@ public class ServiceStation<T extends Transport> {
         }
     }
 
-    public void servicing() {
+    public String servicing() {
         if (queue.poll() != null) {
-            System.out.println("Выполненно ТО над " + queue.poll());
-            servicing();
+            return "Выполненно ТО над " + queue.poll();
         } else {
-            System.out.println("Очередь пуста. Поздравляем!");
+            return null;
         }
     }
 }
