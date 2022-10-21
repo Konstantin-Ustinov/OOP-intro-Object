@@ -5,9 +5,7 @@ import oop.net.stations.ServiceStation;
 import oop.net.supermarket.CashRegisters;
 import oop.net.transport.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -104,51 +102,56 @@ public class Main {
         // Collections exercises
         System.out.println("Collections");
 
-        List<Transport> transports = new ArrayList<>();
+        Set<Transport> transports = new HashSet<>();
         transports.addAll(Arrays.asList(cars));
         transports.addAll(Arrays.asList(trucks));
         transports.addAll(Arrays.asList(buses));
 
-        List<Sponsor> sponsorList = new ArrayList<>(Arrays.asList(sponsors));
+        // Код для задания 3-1
 
-        ArrayList<Driver> drivers = new ArrayList<>();
+        Set<Sponsor> sponsorList = new HashSet<>(Arrays.asList(sponsors));
+
+        Set<Driver> drivers = new HashSet<>();
         drivers.add(paul);
         drivers.add(ben);
         drivers.add(mia);
 
-        ArrayList<Mechanic> mechanics = new ArrayList<>();
+        Set<Mechanic> mechanics = new HashSet<>();
         mechanics.add(new Mechanic("Robert", "Kiosaki", 1982, "Chicago", "Mechanic", "Bugatti", cars));
         mechanics.add(new Mechanic("Richard", "Kiosaki", 1992, "Chicago", "Mechanic", "Bugatti", trucks));
         mechanics.add(new Mechanic("Marty", "Kiosaki", 1908, "Chicago", "Mechanic", "Bugatti", buses));
         mechanics.add(new Mechanic("Ron", "Kiosaki", 2005, "Chicago", "Mechanic", "Bugatti", cars));
         mechanics.add(new Mechanic("Anna", "Kiosaki", 1985, "Chicago", "Mechanic", "Bugatti", trucks));
 
-        System.out.println("drivers = " + drivers.get(0).toString());
-        System.out.println("mechanics = " + mechanics.get(0));
+        System.out.println("sponsorList = " + sponsorList);
+        System.out.println("drivers = " + drivers);
+        System.out.println("mechanics = " + mechanics);
 
-        transports.get(0).getDrivers().add(drivers.get(0));
-        transports.get(1).getDrivers().add(drivers.get(1));
-        transports.get(2).getDrivers().add(drivers.get(2));
 
-        drivers.get(0).setTransport(transports.get(0));
-        drivers.get(1).setTransport(transports.get(1));
-        drivers.get(2).setTransport(transports.get(2));
 
-        transports.get(0).getMechanics().add(mechanics.get(0));
-        transports.get(0).getMechanics().add(mechanics.get(3));
-
-        transports.get(0).getSponsors().add(sponsorList.get(0));
-        transports.get(1).getSponsors().add(sponsorList.get(1));
-        transports.get(2).getSponsors().add(sponsorList.get(2));
-
-        for (Transport transport : transports) {
-            try {
-                System.out.println("Машина: " + transport.getModel() + "\n   Водители: " + transport.getDrivers().toString() +
-                        "\n   Спонсоры: " + transport.getSponsors().toString() + "\n   Механики: " + transport.getMechanics().toString());
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+//        transports.get(0).getDrivers().add(drivers.get(0));
+//        transports.get(1).getDrivers().add(drivers.get(1));
+//        transports.get(2).getDrivers().add(drivers.get(2));
+//
+//        drivers.get(0).setTransport(transports.get(0));
+//        drivers.get(1).setTransport(transports.get(1));
+//        drivers.get(2).setTransport(transports.get(2));
+//
+//        transports.get(0).getMechanics().add(mechanics.get(0));
+//        transports.get(0).getMechanics().add(mechanics.get(3));
+//
+//        transports.get(0).getSponsors().add(sponsorList.get(0));
+//        transports.get(1).getSponsors().add(sponsorList.get(1));
+//        transports.get(2).getSponsors().add(sponsorList.get(2));
+//
+//        for (Transport transport : transports) {
+//            try {
+//                System.out.println("Машина: " + transport.getModel() + "\n   Водители: " + transport.getDrivers().toString() +
+//                        "\n   Спонсоры: " + transport.getSponsors().toString() + "\n   Механики: " + transport.getMechanics().toString());
+//            } catch (RuntimeException e) {
+//                System.out.println(e.getMessage());
+//            }
+//        }
 
         System.out.println("Queue");
 
@@ -173,6 +176,8 @@ public class Main {
         cashRegisters.removeFromQueue();
         cashRegisters.removeFromQueue();
         cashRegisters.removeFromQueue();
+
+
     }
 
     private static void fillHumansArray(Human[] humans) {
