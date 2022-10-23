@@ -1,6 +1,7 @@
 package oop.net.transport;
 
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Car extends Transport implements Competing, Comparable {
@@ -77,5 +78,18 @@ public class Car extends Transport implements Competing, Comparable {
     @Override
     public int compareTo(Object o) {
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return bodyType == car.bodyType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bodyType);
     }
 }

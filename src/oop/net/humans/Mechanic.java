@@ -4,6 +4,7 @@ import oop.net.transport.Transport;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Mechanic <T extends Transport> extends Human  {
     private String lastName;
@@ -47,5 +48,19 @@ public class Mechanic <T extends Transport> extends Human  {
 
     public void setSpecializations(T specialization) {
         this.specializations.add(specialization);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        return lastName.equals(mechanic.lastName) && company.equals(mechanic.company) && specializations.equals(mechanic.specializations);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), lastName, company, specializations);
     }
 }

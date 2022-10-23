@@ -3,6 +3,8 @@ package oop.net.humans;
 import oop.net.exceptions.EmptyCategoryDriverException;
 import oop.net.transport.Transport;
 
+import java.util.Objects;
+
 public class Driver <T extends Transport & Comparable>{
     private String fio;
     private boolean hasDriverLicense;
@@ -80,5 +82,18 @@ public class Driver <T extends Transport & Comparable>{
                 ", category='" + category + '\'' +
                 ", transport=" + transport +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver<?> driver = (Driver<?>) o;
+        return hasDriverLicense == driver.hasDriverLicense && experience == driver.experience && fio.equals(driver.fio) && category.equals(driver.category) && transport.equals(driver.transport);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fio, hasDriverLicense, experience, category, transport);
     }
 }

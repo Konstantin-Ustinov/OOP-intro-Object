@@ -1,5 +1,7 @@
 package oop.net.transport;
 
+import java.util.Objects;
+
 public class Bus extends Transport implements Competing, Comparable {
 
     public enum Capacity {
@@ -81,5 +83,18 @@ public class Bus extends Transport implements Competing, Comparable {
 
     public void setCapacity(Capacity capacity) {
         this.capacity = capacity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bus bus = (Bus) o;
+        return capacity == bus.capacity;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(capacity);
     }
 }

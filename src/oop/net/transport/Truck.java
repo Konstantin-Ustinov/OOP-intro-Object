@@ -1,5 +1,6 @@
 package oop.net.transport;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Truck extends Transport implements Competing, Comparable {
@@ -95,4 +96,18 @@ public class Truck extends Transport implements Competing, Comparable {
 //                ", maxSpeed=" + maxSpeed +
 //                '}';
 //    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Truck truck = (Truck) o;
+        return tonnage == truck.tonnage;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tonnage);
+    }
 }

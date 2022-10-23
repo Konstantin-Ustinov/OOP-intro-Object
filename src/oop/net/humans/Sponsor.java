@@ -1,5 +1,7 @@
 package oop.net.humans;
 
+import java.util.Objects;
+
 public class Sponsor extends Human{
     private int amountSupport; // Сделал это поле, но пользоваться не буду. Буду параметром в метод.
 
@@ -15,5 +17,19 @@ public class Sponsor extends Human{
     @Override
     public String toString() {
         return "Sponsor{} " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Sponsor sponsor = (Sponsor) o;
+        return amountSupport == sponsor.amountSupport;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), amountSupport);
     }
 }
